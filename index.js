@@ -24,11 +24,11 @@ app.post('/detectlanguage', async(req, res) => {
     }
     try{
         const response = await runModel(path.join(__dirname,'model/languageDetecting.py'),options);
-        return res.json({response})
+        return res.json({response:response[0]})
     }catch(err){
-        res.send({success:false,msg:err.msg})
+        res.send({"success":false,"Error":err.message})
     }
-    res.send({success:false,msg:"Can't Predict"})
+    res.send({"success":false,"Error":"Can't Predict"})
 })
 app.listen(port, () => {
     console.log(`Server Is Running At ${host}:${port}`);

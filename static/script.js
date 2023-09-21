@@ -16,6 +16,6 @@ getOutput.addEventListener("click", async (e) => {
         response = await response.json();
         console.log(response);
         loader.style.visibility = 'hidden';
-        myOutput.value = response.response?response.response[0] ? response.response[0] : "":"";
+        myOutput.value = response.response?response.response:"Unable To Predict";
     }
 })
