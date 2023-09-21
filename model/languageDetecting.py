@@ -4,8 +4,8 @@ import joblib
 import numpy as np
 
 #loading save model and countvectorizer to transform our input to predict the language
-model = joblib.load('./languageDetectingModel.pkl')
-cv = joblib.load('./cv.pkl')
+model = joblib.load('./model/languageDetectingModel.pkl')
+cv = joblib.load('./model/cv.pkl')
 
 
 if len(sys.argv)>1:

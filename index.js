@@ -4,6 +4,10 @@ const path = require('path');
 const app = express();
 const port = 3000;
 const host = 'http://127.0.0.1';
+const cors = require('cors');
+
+app.use(cors());
+app.use('/static',express.static('static'))
 
 const runModel = async (file,options)=>{
     const response = await PythonShell.run(file,options);
@@ -12,14 +16,14 @@ const runModel = async (file,options)=>{
 
 app.use(express.json());
 app.get('/', (req, res) => {
-    res.send("Hello User");
+    res.sendFile(path.join(__dirname,'frontend/index.html'))
 })
 app.post('/detectlanguage', async(req, res) => {
     const options = {
         args:[req.body.text]
     }
     try{
-        const response = await runModel(path.join(__dirname,'languageDetecting.py'),options);
+        const response = await runModel(path.join(__dirname,'model/languageDetecting.py'),options);
         return res.json({response})
     }catch(err){
         res.send({success:false,msg:err.msg})
