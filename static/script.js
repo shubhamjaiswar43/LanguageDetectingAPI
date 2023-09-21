@@ -6,7 +6,7 @@ getOutput.addEventListener("click", async (e) => {
     e.preventDefault();
     if (myInput.value.length !== 0) {
         loader.style.visibility = 'visible';
-        let response = await fetch("https://languagedetectionapi-ygne.onrender.com/detectlanguage", {
+        let response = await fetch("https://languagedetectionapi-6flw.onrender.com/detectlanguage", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
